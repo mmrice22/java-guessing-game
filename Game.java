@@ -17,6 +17,7 @@ public class Game {
     int number = rand.nextInt(100);
     // print the random number to see if it is working
     // System.out.println(number);
+    
 
   }
 
