@@ -15,7 +15,7 @@ public class Game {
     Random rand = new Random();
     // call method nextInt and pass in the upper range bound
     int number = rand.nextInt(100);
-    // print the random number to see what the number is for myself
+    // print the random number to see what the number is for testing purposes
     System.out.println(number);
 
     
@@ -24,15 +24,19 @@ public class Game {
     System.out.println("Your guess?");
     // get user guess input
     int guess = input.nextInt();
+    // counter for number of guesses
+    int counter = 0;
 
     if (guess < number) {
       System.out.println("Your guess is too low, try again!");
+      counter += 1;
       continue;
     } else if (guess > number ) {
       System.out.println("Your guess is too high, try again!");
+      counter += 1;
       continue;
     } else {
-      System.out.println("Well done, " + playerName + "! You found my number!");
+      System.out.println("Well done, " + playerName + "! You found my number in " + counter + " tries!");
       break;
     }
 
