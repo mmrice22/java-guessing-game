@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.util.Random;
+import java.util.InputMismatchException;
 
 
 public class Game {
@@ -23,33 +24,42 @@ public class Game {
     
     while(true) {
     // ask for users guess
-    System.out.println("Your guess?");
-    // get user guess input
-    int guess = input.nextInt();
-    // originally had counter = 0 here --- this is wrong because it resets the counter
-    // to 0 everytime it goes through the loop. Counter has to be OUTSIDE the loop
-    // so it doesn't start over every iteration
+      System.out.println("Your guess?");
 
+      // get user guess input
+      int guess = input.nextInt();
+      // originally had counter = 0 here --- this is wrong because it resets the counter
+      // to 0 everytime it goes through the loop. Counter has to be OUTSIDE the loop
+      // so it doesn't start over every iteration
+      try {
+        guess = input.nextInt();
+      } catch(InputMismatchException e) {
+          String bad_input = input.next();
+          System.out.println("That's not an integer silly, try again");
+          continue;
+      }
+
+    
     // if guess is OUTSIDE the range 0 to 100
-    if (guess < 0 | guess > 100) {
-      System.out.println("Ummmm..." + guess + " is not within the range we agreed upon " + playerName + "! Come on now...");
-      counter = counter + 1;
-      continue;
-    }
+      if (guess < 0 | guess > 100) {
+        System.out.println("Ummmm..." + guess + " is not within the range we agreed upon " + playerName + "! Come on now...");
+        counter = counter + 1;
+        continue;
+      }
 
-    if (guess < number) {
-      System.out.println("Your guess is too low, try again!");
-      counter = counter + 1;
-      continue;
+      if (guess < number) {
+        System.out.println("Your guess is too low, try again!");
+        counter = counter + 1;
+        continue;
     } else if (guess > number ) {
-      System.out.println("Your guess is too high, try again!");
-      counter = counter + 1;
-      continue;
+        System.out.println("Your guess is too high, try again!");
+        counter = counter + 1;
+        continue;
     } else {
       // still a guess when they guess correctly so still increment the counter
-      counter = counter + 1;
-      System.out.println("Well done, " + playerName + "! You found my number in " + counter + " tries!");
-      break;
+        counter = counter + 1;
+        System.out.println("Well done, " + playerName + "! You found my number in " + counter + " tries!");
+        break;
     }
     }
   }
