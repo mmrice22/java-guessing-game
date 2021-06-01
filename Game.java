@@ -27,15 +27,17 @@ public class Game {
       System.out.println("Your guess?");
 
       // get user guess input
-      int guess = input.nextInt();
+      int guess;
       // originally had counter = 0 here --- this is wrong because it resets the counter
       // to 0 everytime it goes through the loop. Counter has to be OUTSIDE the loop
       // so it doesn't start over every iteration
       try {
+        // get user guess input
         guess = input.nextInt();
       } catch(InputMismatchException e) {
           String bad_input = input.next();
-          System.out.println("That's not an integer silly, try again");
+          System.out.println("That's not an integer silly, try again!");
+          counter = counter + 1;
           continue;
       }
 
