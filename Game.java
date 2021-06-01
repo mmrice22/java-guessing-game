@@ -18,24 +18,29 @@ public class Game {
     // print the random number to see what the number is for testing purposes
     System.out.println(number);
 
+    // counter for number of guesses
+    int counter = 0;
     
     while(true) {
     // ask for users guess
     System.out.println("Your guess?");
     // get user guess input
     int guess = input.nextInt();
-    // counter for number of guesses
-    int counter = 0;
+    // originally had counter = 0 here --- this is wrong because it resets the counter
+    // to 0 everytime it goes through the loop. Counter has to be OUTSIDE the loop
+    // so it doesn't start over every iteration
 
     if (guess < number) {
       System.out.println("Your guess is too low, try again!");
-      counter += 1;
+      counter = counter + 1;
       continue;
     } else if (guess > number ) {
       System.out.println("Your guess is too high, try again!");
-      counter += 1;
+      counter = counter + 1;
       continue;
     } else {
+      // still a guess when they guess correctly so still increment the counter
+      counter = counter + 1;
       System.out.println("Well done, " + playerName + "! You found my number in " + counter + " tries!");
       break;
     }
