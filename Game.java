@@ -16,8 +16,21 @@ public class Game {
     // call method nextInt and pass in the upper range bound
     int number = rand.nextInt(100);
     // print the random number to see if it is working
-    // System.out.println(number);
+    System.out.println(number);
+
+    // ask for users guess
+    System.out.println("Your guess?");
+    // get user guess
+    int guess = input.nextInt();
+    // if guess is less then random number:
+    if (guess < number) {
+      System.out.println("Your guess is too low, try again!");
+    } else if (guess > number ) {
+      System.out.println("Your guess is too hight, try again!");
+    }
+
     
+
 
   }
 
